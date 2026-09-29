@@ -1,36 +1,46 @@
-LineageOS
-===========
+Scalar
+======
 
 Getting started
 ---------------
 
-To get started with Android/LineageOS, you'll need to get familiar with [Source Control Tools](https://source.android.com/setup/develop).
+To get started with Android and Scalar, you'll need to get familiar with [Source Control Tools](https://source.android.com/setup/develop).
 
-To initialize your local repository using the LineageOS trees, use a command like this:
+### Initialize repository
+
+To initialize your local repository using the Scalar trees, use:
+
+```bash
+repo init -u https://github.com/projectscalar/manifest.git -b 16 --git-lfs
 ```
-repo init -u https://github.com/LineageOS/android.git -b lineage-23.2 --git-lfs
+
+### Sync source tree
+
+To sync the source code:
+
+```bash
+repo sync -c --no-clone-bundle --optimized-fetch --prune --force-sync -j$(nproc --all)
 ```
-Then to sync up:
-```
-repo sync
-```
-Please see the [LineageOS Wiki](https://wiki.lineageos.org/) for building instructions, by device.
 
-
-Submitting patches
-------------------
-Patches are always welcome! Please submit your patches via LineageOS Gerrit!
-
-Simply follow our guide on [how to submit patches](https://wiki.lineageos.org/submitting-patch-howto.html).
-
-To view the status of your and others' patches, visit [LineageOS Gerrit Code Review](https://review.lineageos.org/).
-
-
-Buildbot
+Building
 --------
 
-All supported devices are built weekly and periodically as changes are committed to ensure the source trees remain buildable.
+Set up your build environment:
 
-You can view the current build statuses at [LineageOS Buildkite](https://buildkite.com/lineageos).
+```bash
+source build/envsetup.sh
+lunch lineage_<device>-bp4a-userdebug
+mka bacon
+```
 
-Builds produced weekly by the buildbot can be downloaded from [LineageOS downloads](https://download.lineageos.org/).
+Contributing
+------------
+
+Patches and contributions are welcome! Feel free to open Pull Requests or submit issues directly on our [GitHub Organization](https://github.com/projectscalar).
+
+Credits
+-------
+
+* [LineageOS](https://github.com/LineageOS)
+* [AOSP](https://android.googlesource.com)
+* [Paranoid Android](https://github.com/AOSPA)
